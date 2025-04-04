@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import JobCard from '../components/JobCard';
 import AddJob from '../components/AddJob';
 import FloatingAddButton from '../components/FloatingAddButton';
-
+import ProgressPipeline from '../components/ProgressPipeline';
+import GraphModal from "../components/GraphModal";
+import { BarChart3} from 'lucide-react';
 
 type Job = {
     id: number;
@@ -20,7 +22,10 @@ const Jobs = () => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
+  const [showGraphModal, setShowGraphModal] = useState(false);
 
+
+  
   useEffect(() => {
     fetch('http://127.0.0.1:8000/jobs')
       .then((res) => res.json())
@@ -59,9 +64,20 @@ const Jobs = () => {
   };
   return (
     <div>
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-blue-400">Job Applications</h1>
-      <p className="text-sm text-gray-400 mb-6">Track and manage the jobs you've applied to.</p>
+      <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-blue-400">Job Applications</h1>
+            <p className="text-sm text-gray-400">Track and manage the jobs you've applied to.</p>
+          </div>
 
+          <button
+              onClick={() => setShowGraphModal(true)}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md text-sm font-semibold transition duration-200"
+            >
+              <BarChart3 className="w-5 h-5 text-white" />
+            </button>
+        </div>
+      {!loading && jobs.length > 0 && <ProgressPipeline jobs={jobs} />}
       {loading ? (
         <p className="text-gray-400">Loading jobs...</p>
       ) : jobs.length === 0 ? (
@@ -81,15 +97,16 @@ const Jobs = () => {
           />
         ))
       )}
-            {showModal && (
-  <AddJob
-    jobToEdit={editingJob}
-    onClose={() => {
-      setShowModal(false);
-      setEditingJob(null);
-    }}
-    onSubmit={(jobData) => {
-      const isEditing = Boolean(editingJob);
+
+    {showModal && (
+      <AddJob
+        jobToEdit={editingJob}
+        onClose={() => {
+          setShowModal(false);
+          setEditingJob(null);
+        }}
+      onSubmit={(jobData) => {
+        const isEditing = Boolean(editingJob);
 
       const method = isEditing ? 'PATCH' : 'POST';
       const endpoint = isEditing && editingJob
@@ -122,6 +139,7 @@ const Jobs = () => {
 )}
 
 <FloatingAddButton onClick={() => setShowModal(true)} />
+{showGraphModal && <GraphModal onClose={() => setShowGraphModal(false)} jobs={jobs} />}
 
     </div>
     

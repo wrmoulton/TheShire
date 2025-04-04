@@ -36,9 +36,9 @@ const typeColors: Record<string, string> = {
 
 const JobCard = ({ job, onStatusChange, onEdit,onDelete }: Props) => {
   return (
-    <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg transition hover:scale-[1.01] hover:shadow-xl duration-200">
+    <div className="group bg-gray-800/50 border border-gray-700 rounded-xl p-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg transition hover:scale-[1.01] hover:shadow-xl duration-200">
       {/* ✏️ Edit + 🗑️ Delete Buttons */}
-        <div className="absolute top-3 right-3 flex gap-2">
+      <div className="absolute top-3 right-3 flex gap-2 z-10 sm:opacity-0 sm:group-hover:opacity-100 opacity-100 transition-opacity bg-gray-800/80 rounded-md p-1 sm:p-0">
           <button
             onClick={() => onEdit(job)}
             className="p-1 rounded hover:bg-gray-700 transition"
