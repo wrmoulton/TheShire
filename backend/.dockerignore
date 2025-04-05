@@ -1,0 +1,18 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local virtual environments
+venv/
+.venv/
+pyvenv.cfg
+
+# SQLite database files (only if you don’t want to copy the DB into the image)
+*.db
+*.sqlite3
+
+# Other common ignores
+.env
+.DS_Store

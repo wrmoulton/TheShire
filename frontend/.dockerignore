@@ -1,0 +1,13 @@
+# Node modules (should be installed inside container)
+node_modules/
+
+# Build output (will be recreated in container)
+dist/
+
+# System & IDE files
+.DS_Store
+.env
+*.log
+
+# Local dev environment
+.vscode/
