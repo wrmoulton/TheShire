@@ -3,7 +3,6 @@
 
 <p align="center">
   <img src="assets/Dash.png" alt="Jobs Page" width="400" height="500" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="assets/Graphs.png" alt="Graphs Page" width="400" height="500" />
 </p>
 
