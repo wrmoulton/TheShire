@@ -1,9 +1,14 @@
 🧙 TheShire
 --------
 
-![Job Dash](assets/Dash.png)
+<p align="center">
+  <img src="assets/Dash.png" alt="Jobs Page" width="400" height="500" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/Graphs.png" alt="Graphs Page" width="400" height="500" />
+</p>
 
-![Job Graphs](assets/Graphs.png)
+
+
 
 TheShire is a private, self-hosted job application tracker built with a FastAPI backend and a Vite + React frontend. It allows users to manage job applications with support for titles, companies, dates, statuses, notes, and links.
 
